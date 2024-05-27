@@ -1,2 +1,5 @@
 # hello-world
-this repository is for a program
+//program to compute co curricular activities for new students
+#include <iostream>
+using namespace std;
+
