@@ -1,4 +1,4 @@
-# hello-world
+# hello-world 1st Beckham's project
 //program to compute co curricular activities for new students
 #include <iostream>
 #include <string>
