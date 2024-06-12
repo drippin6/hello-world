@@ -7,7 +7,7 @@ int main()
 {
 
 //structure used to represent a student
-  struct student{
+  struct student{ 
   string name;
   char gender;//'m' is for male and 'f' is for female
   bool participatinginsport;
