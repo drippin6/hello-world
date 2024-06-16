@@ -14,10 +14,16 @@ int main()
   int clubs;
 }
 //constants for maximum capacity
-  const int max club capacity=60;
-  const int max sport capacity=20;
-  const int num students=50*3//total number of students
+    const int max club capacity=60;
+    const int max sport capacity=20;
+    const int num students=50*3//total number of students
 //function to validate gender constraints 
-  bool validgenderratio(int males,int females,double ratio)
+    bool validgenderratio(int males,int females,double ratio)
 {
-  double 
+  double totalstudents=males+females;
+  double maleratio=males/totalstudents;
+  double femaleratio=females/totalstuents;
+  return (maleratio<=maxratio)&&(femaleratio<=maxratio);
+}  
+  
+  
