@@ -25,5 +25,20 @@ int main()
   double femaleratio=females/totalstuents;
   return (maleratio<=maxratio)&&(femaleratio<=maxratio);
 }  
+//validate total number of clubs and sports
+  if(clubs>3){
+  cout<<"Error:maximum of 3 clubs allowed"<<end1;\n;
+  return 1;
+  }
+  if(sports>1){
+  cout<<"Error:maximum of 1 sport allowed"<<end1;\n;
+  return 1;
+  }
+//validate capacity for clubs and sports
+  if(clubs*max club capacity+sports*max sport capacity>students){
+  cout<<"Error:capacity exceeded"<<end1;
+  return 1;
+  }
+
   
   
