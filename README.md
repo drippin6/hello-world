@@ -40,5 +40,10 @@ int main()
   return 1;
   }
 
+//validate gender ratio for clubs and sports
+  if
+  (validgenderratio(clubs,1,0.5))
+  {
+  
   
   
