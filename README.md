@@ -44,6 +44,36 @@ int main()
   if
   (validgenderratio(clubs,1,0.5))
   {
+  cout<<"Error:Gender ratio exceeded"<<end1;
+  return 1;
+  }
+  clubs++;
+  }
+  if
+  (validgenderratio(sports,1,0.75))
+  {
+  cout<<"Error:Gender ratio exceeded"<<end1;
+  return 1;
+  }
+  sports++;
+  }
+  for(int i=0;i<students;i++)
+  {
+  if 
+  (students[i]participatinginsport){
+
+  cout<<"Selected activities"<<end1;
+  if(sports>0){
+  cout<<"sport"<<end1;
+  }
+  for(int i=0;i<clubs;i++){
+  cout<<"clubs"<<end1;
+  }
+  system("pause");
+  return 0;
+  }
+  
+  
   
   
   
