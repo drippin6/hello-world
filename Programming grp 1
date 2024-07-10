@@ -3,17 +3,28 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
-using namespace std;
+#include <fstream>
+#include <algorithm>
 
 struct Student {
-    string firstname;
-    string surname;
-    string gender;
+    std::string firstName;
+    std::string surname;
+    std::string gender;
     int age;
-    string bbitGroup;
-    string sport;
-    vector<string> clubs;
+    int group;
+    std::string sport;
+    std::vector<std::string> clubs;
+};
+
+struct Activity {
+    std::string name;
+    int maxCapacity;
+    int currentCapacity;
+    int maleCount;
+    int femaleCount;
+};
+
+std::vector<Student> studen
 };
 
 vector<Student> students;
