@@ -20,7 +20,7 @@ int main()
 //function to validate gender constraints 
     bool validgenderratio(int males,int females,double ratio)
 {
-  double totalstudents=males+females;
+  int totalstudents=males+females;
   double maleratio=males/totalstudents;
   double femaleratio=females/totalstuents;
   return (maleratio<=maxratio)&&(femaleratio<=maxratio);
