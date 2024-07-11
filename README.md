@@ -189,13 +189,13 @@ void viewStudents() {
 }
 void viewClubs() {
     for (const auto& club : clubs) {
-        :cout << "Club: " << club.name << ", Capacity: " << club.currentCapacity << "/" << club.maxCapacity << "\n";
+        cout << "Club: " << club.name << ", Capacity: " << club.currentCapacity << "/" << club.maxCapacity << "\n";
     }
 }
 
 void viewSports() {
     for (const auto& sport : sports) {
-        std::cout << "Sport: " << sport.name << ", Capacity: " << sport.currentCapacity << "/" << sport.maxCapacity << "\n";
+        cout << "Sport: " << sport.name << ", Capacity: " << sport.currentCapacity << "/" << sport.maxCapacity << "\n";
     }
 }
 
