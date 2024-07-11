@@ -87,6 +87,10 @@ void addStudent() {
     cin >> student.surname;
     cout << "Enter gender (Male/Female): ";
     cin >> student.gender;
+    if (student.gender != "Male"  && student.gender != "Female") {
+        cout << "Invalid gender.Please re-enter"<<endl;
+        return addStudent();
+    }
     cout << "Enter age: ";
     cin >> student.age;
     cout << "Enter BBIT group (1, 2, or 3): ";
