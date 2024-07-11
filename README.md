@@ -86,24 +86,24 @@ void addStudent() {
    cout << "Enter surname: ";
     cin >> student.surname;
     cout << "Enter gender (Male/Female): ";
-    std::cin >> student.gender;
-    std::cout << "Enter age: ";
-    std::cin >> student.age;
-    std::cout << "Enter BBIT group (1, 2, or 3): ";
-    std::cin >> student.group;
+    cin >> student.gender;
+    cout << "Enter age: ";
+    cin >> student.age;
+    cout << "Enter BBIT group (1, 2, or 3): ";
+    cin >> student.group;
 
-    std::cout << "Do you want to participate in a sport? (yes/no): ";
-    std::cin >> sportChoice;
+    cout << "Do you want to participate in a sport? (yes/no): ";
+    cin >> sportChoice;
 
     if (sportChoice == "yes") {
-        std::cout << "Available sports:\n";
+        cout << "Available sports:\n";
         for (const auto& sport : sports) {
-            std::cout << sport.name << " (Capacity: " << sport.currentCapacity << "/" << sport.maxCapacity << ")\n";
+            cout << sport.name << " (Capacity: " << sport.currentCapacity << "/" << sport.maxCapacity << ")\n";
         }
-        std::cout << "Enter the sport you want to join: ";
-        std::cin >> student.sport;
+        cout << "Enter the sport you want to join: ";
+        cin >> student.sport;
 
-        auto it = std::find_if(sports.begin(), sports.end(), [&](const Activity& sport) { return sport.name == student.sport; });
+        auto it = find_if(sports.begin(), sports.end(), [&](const Activity& sport) { return sport.name == student.sport; });
 
         if (it != sports.end() && canJoinActivity(*it, student.gender, true)) {
             it->currentCapacity++;
@@ -113,22 +113,22 @@ void addStudent() {
                 it->femaleCount++;
             }
         } else {
-            std::cout << "Cannot join the sport due to capacity or gender limit.\n";
+            cout << "Cannot join the sport due to capacity or gender limit.\n";
             student.sport = "";
         }
 
-        std::cout << "How many clubs do you want to join? (0, 1, or 2): ";
-        std::cin >> clubCount;
+        cout << "How many clubs do you want to join? (0, 1, or 2): ";
+        cin >> clubCount;
 
         for (int i = 0; i < clubCount; ++i) {
-            std::cout << "Available clubs:\n";
+            cout << "Available clubs:\n";
             for (const auto& club : clubs) {
-                std::cout << club.name << " (Capacity: " << club.currentCapacity << "/" << club.maxCapacity << ")\n";
+                cout << club.name << " (Capacity: " << club.currentCapacity << "/" << club.maxCapacity << ")\n";
             }
-            std::cout << "Enter the club you want to join: ";
-            std::cin >> clubChoice;
+            cout << "Enter the club you want to join: ";
+            cin >> clubChoice;
 
-            auto it = std::find_if(clubs.begin(), clubs.end(), [&](const Activity& club) { return club.name == clubChoice; });
+            auto it = find_if(clubs.begin(), clubs.end(), [&](const Activity& club) { return club.name == clubChoice; });
 
             if (it != clubs.end() && canJoinActivity(*it, student.gender, false)) {
                 it->currentCapacity++;
@@ -139,22 +139,22 @@ void addStudent() {
                 }
                 student.clubs.push_back(clubChoice);
             } else {
-                std::cout << "Cannot join the club due to capacity or gender limit.\n";
+                cout << "Cannot join the club due to capacity or gender limit.\n";
             }
         }
     } else {
-        std::cout << "How many clubs do you want to join? (1 to 3): ";
-        std::cin >> clubCount;
+        cout << "How many clubs do you want to join? (1 to 3): ";
+        cin >> clubCount;
 
         for (int i = 0; i < clubCount; ++i) {
-            std::cout << "Available clubs:\n";
+            cout << "Available clubs:\n";
             for (const auto& club : clubs) {
                 std::cout << club.name << " (Capacity: " << club.currentCapacity << "/" << club.maxCapacity << ")\n";
             }
-            std::cout << "Enter the club you want to join: ";
-            std::cin >> clubChoice;
+            cout << "Enter the club you want to join: ";
+            cin >> clubChoice;
 
-            auto it = std::find_if(clubs.begin(), clubs.end(), [&](const Activity& club) { return club.name == clubChoice; });
+            auto it = find_if(clubs.begin(), clubs.end(), [&](const Activity& club) { return club.name == clubChoice; });
 
             if (it != clubs.end() && canJoinActivity(*it, student.gender, false)) {
                 it->currentCapacity++;
@@ -165,7 +165,7 @@ void addStudent() {
                 }
                 student.clubs.push_back(clubChoice);
             } else {
-                std::cout << "Cannot join the club due to capacity or gender limit.\n";
+                cout << "Cannot join the club due to capacity or gender limit.\n";
             }
         }
     }
@@ -174,22 +174,22 @@ void addStudent() {
 }
 void viewStudents() {
     for (const auto& student : students) {
-        std::cout << "Name: " << student.firstName << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << ", Group: " << student.group << "\n";
+        cout << "Name: " << student.firstName << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << ", Group: " << student.group << "\n";
         if (!student.sport.empty()) {
-            std::cout << "Sport: " << student.sport << "\n";
+            cout << "Sport: " << student.sport << "\n";
         }
         if (!student.clubs.empty()) {
-            std::cout << "Clubs: ";
+            cout << "Clubs: ";
             for (const auto& club : student.clubs) {
-                std::cout << club << " ";
+                cout << club << " ";
             }
-            std::cout << "\n";
+            cout << "\n";
         }
     }
 }
 void viewClubs() {
     for (const auto& club : clubs) {
-        std::cout << "Club: " << club.name << ", Capacity: " << club.currentCapacity << "/" << club.maxCapacity << "\n";
+        :cout << "Club: " << club.name << ", Capacity: " << club.currentCapacity << "/" << club.maxCapacity << "\n";
     }
 }
 
@@ -201,19 +201,19 @@ void viewSports() {
 
 void viewGroupedStudents() {
     for (int group = 1; group <= 3; ++group) {
-        std::cout << "Group " << group << " students:\n";
+        cout << "Group " << group << " students:\n";
         for (const auto& student : students) {
             if (student.group == group) {
-                std::cout << "Name: " << student.firstName << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << "\n";
+                cout << "Name: " << student.firstName << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << "\n";
                 if (!student.sport.empty()) {
-                    std::cout << "Sport: " << student.sport << "\n";
+                    cout << "Sport: " << student.sport << "\n";
                 }
                 if (!student.clubs.empty()) {
-                    std::cout << "Clubs: ";
+                    cout << "Clubs: ";
                     for (const auto& club : student.clubs) {
-                        std::cout << club << " ";
+                        cout << club << " ";
                     }
-                    std::cout << "\n";
+                    cout << "\n";
                 }
             }
         }
@@ -221,7 +221,7 @@ void viewGroupedStudents() {
 }
 
 void saveAllFiles() {
-    std::ofstream studentFile("students.csv");
+    ofstream studentFile("students.csv");
     studentFile << "FirstName,Surname,Gender,Age,Group,Sport,Clubs\n";
     for (const auto& student : students) {
         studentFile << student.firstName << "," << student.surname << "," << student.gender << "," << student.age << "," << student.group << "," << student.sport << ",";
@@ -234,10 +234,10 @@ void saveAllFiles() {
         studentFile << "\n";
     }
     studentFile.close();
-    std::cout << "Student data saved to students.csv\n";
+    cout << "Student data saved to students.csv\n";
 }
 
-bool canJoinActivity(Activity& activity, const std::string& gender, bool isSport) {
+bool canJoinActivity(Activity& activity, const string& gender, bool isSport) {
     if (activity.currentCapacity >= activity.maxCapacity) {
         return false;
     }
