@@ -186,4 +186,65 @@ void viewStudents() {
         }
     }
 }
+void viewClubs() {
+    for (const auto& club : clubs) {
+        std::cout << "Club: " << club.name << ", Capacity: " << club.currentCapacity << "/" << club.maxCapacity << "\n";
+    }
+}
 
+void viewSports() {
+    for (const auto& sport : sports) {
+        std::cout << "Sport: " << sport.name << ", Capacity: " << sport.currentCapacity << "/" << sport.maxCapacity << "\n";
+    }
+}
+
+void viewGroupedStudents() {
+    for (int group = 1; group <= 3; ++group) {
+        std::cout << "Group " << group << " students:\n";
+        for (const auto& student : students) {
+            if (student.group == group) {
+                std::cout << "Name: " << student.firstName << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << "\n";
+                if (!student.sport.empty()) {
+                    std::cout << "Sport: " << student.sport << "\n";
+                }
+                if (!student.clubs.empty()) {
+                    std::cout << "Clubs: ";
+                    for (const auto& club : student.clubs) {
+                        std::cout << club << " ";
+                    }
+                    std::cout << "\n";
+                }
+            }
+        }
+    }
+}
+
+void saveAllFiles() {
+    std::ofstream studentFile("students.csv");
+    studentFile << "FirstName,Surname,Gender,Age,Group,Sport,Clubs\n";
+    for (const auto& student : students) {
+        studentFile << student.firstName << "," << student.surname << "," << student.gender << "," << student.age << "," << student.group << "," << student.sport << ",";
+        for (size_t i = 0; i < student.clubs.size(); ++i) {
+            studentFile << student.clubs[i];
+            if (i < student.clubs.size() - 1) {
+                studentFile << ";";
+            }
+        }
+        studentFile << "\n";
+    }
+    studentFile.close();
+    std::cout << "Student data saved to students.csv\n";
+}
+
+bool canJoinActivity(Activity& activity, const std::string& gender, bool isSport) {
+    if (activity.currentCapacity >= activity.maxCapacity) {
+        return false;
+    }
+    if (gender == "Male" && activity.maleCount >= activity.maxCapacity * 0.5) {
+        return false;
+    }
+    if (gender == "Female" && activity.femaleCount >= activity.maxCapacity * 0.5) {
+        return false;
+    }
+    return 0;
+}
