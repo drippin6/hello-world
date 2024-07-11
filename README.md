@@ -74,4 +74,101 @@ int main() {
 
     return 0;
 }
+void addStudent() {
+    Student student;
+    std::string sportChoice;
+    std::string clubChoice;
+    int clubCount;
+
+    std::cout << "Enter first name: ";
+    std::cin >> student.firstName;
+    std::cout << "Enter surname: ";
+    std::cin >> student.surname;
+    std::cout << "Enter gender (Male/Female): ";
+    std::cin >> student.gender;
+    std::cout << "Enter age: ";
+    std::cin >> student.age;
+    std::cout << "Enter BBIT group (1, 2, or 3): ";
+    std::cin >> student.group;
+
+    std::cout << "Do you want to participate in a sport? (yes/no): ";
+    std::cin >> sportChoice;
+
+    if (sportChoice == "yes") {
+        std::cout << "Available sports:\n";
+        for (const auto& sport : sports) {
+            std::cout << sport.name << " (Capacity: " << sport.currentCapacity << "/" << sport.maxCapacity << ")\n";
+        }
+        std::cout << "Enter the sport you want to join: ";
+        std::cin >> student.sport;
+
+        auto it = std::find_if(sports.begin(), sports.end(), [&](const Activity& sport) { return sport.name == student.sport; });
+
+        if (it != sports.end() && canJoinActivity(*it, student.gender, true)) {
+            it->currentCapacity++;
+            if (student.gender == "Male") {
+                it->maleCount++;
+            } else {
+                it->femaleCount++;
+            }
+        } else {
+            std::cout << "Cannot join the sport due to capacity or gender limit.\n";
+            student.sport = "";
+        }
+
+        std::cout << "How many clubs do you want to join? (0, 1, or 2): ";
+        std::cin >> clubCount;
+
+        for (int i = 0; i < clubCount; ++i) {
+            std::cout << "Available clubs:\n";
+            for (const auto& club : clubs) {
+                std::cout << club.name << " (Capacity: " << club.currentCapacity << "/" << club.maxCapacity << ")\n";
+            }
+            std::cout << "Enter the club you want to join: ";
+            std::cin >> clubChoice;
+
+            auto it = std::find_if(clubs.begin(), clubs.end(), [&](const Activity& club) { return club.name == clubChoice; });
+
+            if (it != clubs.end() && canJoinActivity(*it, student.gender, false)) {
+                it->currentCapacity++;
+                if (student.gender == "Male") {
+                    it->maleCount++;
+                } else {
+                    it->femaleCount++;
+                }
+                student.clubs.push_back(clubChoice);
+            } else {
+                std::cout << "Cannot join the club due to capacity or gender limit.\n";
+            }
+        }
+    } else {
+        std::cout << "How many clubs do you want to join? (1 to 3): ";
+        std::cin >> clubCount;
+
+        for (int i = 0; i < clubCount; ++i) {
+            std::cout << "Available clubs:\n";
+            for (const auto& club : clubs) {
+                std::cout << club.name << " (Capacity: " << club.currentCapacity << "/" << club.maxCapacity << ")\n";
+            }
+            std::cout << "Enter the club you want to join: ";
+            std::cin >> clubChoice;
+
+            auto it = std::find_if(clubs.begin(), clubs.end(), [&](const Activity& club) { return club.name == clubChoice; });
+
+            if (it != clubs.end() && canJoinActivity(*it, student.gender, false)) {
+                it->currentCapacity++;
+                if (student.gender == "Male") {
+                    it->maleCount++;
+                } else {
+                    it->femaleCount++;
+                }
+                student.clubs.push_back(clubChoice);
+            } else {
+                std::cout << "Cannot join the club due to capacity or gender limit.\n";
+            }
+        }
+    }
+
+    students.push_back(student);
+}
 
