@@ -3,27 +3,28 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+using namespace std;
 
 struct Student {
-    std::string firstName;
-    std::string surname;
-    std::string gender;
+    string firstName;
+    string surname;
+    string gender;
     int age;
     int group;
-    std::string sport;
-    std::vector<std::string> clubs;
+    string sport;
+   vector<string> clubs;
 };
 
 struct Activity {
-    std::string name;
+    string name;
     int maxCapacity;
     int currentCapacity;
     int maleCount;
     int femaleCount;
 };
-std::vector<Student> students;
-std::vector<Activity> sports = {{"Rugby", 20, 0, 0, 0}, {"Athletics", 20, 0, 0, 0}, {"Swimming", 20, 0, 0, 0}, {"Soccer", 20, 0, 0, 0}};
-std::vector<Activity> clubs = {{"Journalism Club", 60, 0, 0, 0}, {"Red Cross Society", 60, 0, 0, 0}, {"AISEC", 60, 0, 0, 0}, {"Business Club", 60, 0, 0, 0}, {"Computer Science Club", 60, 0, 0, 0}};
+vector<Student> students;
+vector<Activity> sports = {{"Rugby", 20, 0, 0, 0}, {"Athletics", 20, 0, 0, 0}, {"Swimming", 20, 0, 0, 0}, {"Soccer", 20, 0, 0, 0}};
+vector<Activity> clubs = {{"Journalism Club", 60, 0, 0, 0}, {"Red Cross Society", 60, 0, 0, 0}, {"AISEC", 60, 0, 0, 0}, {"Business Club", 60, 0, 0, 0}, {"Computer Science Club", 60, 0, 0, 0}};
 
 void addStudent();
 void viewStudents();
@@ -31,20 +32,20 @@ void viewClubs();
 void viewSports();
 void viewGroupedStudents();
 void saveAllFiles();
-bool canJoinActivity(Activity& activity, const std::string& gender, bool isSport);
+bool canJoinActivity(Activity& activity, const string& gender, bool isSport);
 int main() {
     int choice;
     do {
-        std::cout << "Menu:\n";
-        std::cout << "1. Add Student\n";
-        std::cout << "2. View Students (ALL and per group)\n";
-        std::cout << "3. View Clubs/ Societies\n";
-        std::cout << "4. View Sports\n";
-        std::cout << "5. View Grouped Students\n";
-        std::cout << "6. Save all Files\n";
-        std::cout << "7. Exit\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+      cout << "Menu:\n";
+      cout << "1. Add Student\n";
+      cout << "2. View Students (ALL and per group)\n";
+      cout << "3. View Clubs/ Societies\n";
+      cout << "4. View Sports\n";
+      cout << "5. View Grouped Students\n";
+      cout << "6. Save all Files\n";
+      cout << "7. Exit\n";
+      cout << "Enter your choice: ";
+        cin >> choice;
 
         switch (choice) {
             case 1:
@@ -76,15 +77,15 @@ int main() {
 }
 void addStudent() {
     Student student;
-    std::string sportChoice;
-    std::string clubChoice;
+    string sportChoice;
+    string clubChoice;
     int clubCount;
 
-    std::cout << "Enter first name: ";
-    std::cin >> student.firstName;
-    std::cout << "Enter surname: ";
-    std::cin >> student.surname;
-    std::cout << "Enter gender (Male/Female): ";
+    cout << "Enter first name: ";
+    cin >> student.firstName;
+   cout << "Enter surname: ";
+    cin >> student.surname;
+    cout << "Enter gender (Male/Female): ";
     std::cin >> student.gender;
     std::cout << "Enter age: ";
     std::cin >> student.age;
