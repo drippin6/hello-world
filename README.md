@@ -171,4 +171,19 @@ void addStudent() {
 
     students.push_back(student);
 }
+void viewStudents() {
+    for (const auto& student : students) {
+        std::cout << "Name: " << student.firstName << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << ", Group: " << student.group << "\n";
+        if (!student.sport.empty()) {
+            std::cout << "Sport: " << student.sport << "\n";
+        }
+        if (!student.clubs.empty()) {
+            std::cout << "Clubs: ";
+            for (const auto& club : student.clubs) {
+                std::cout << club << " ";
+            }
+            std::cout << "\n";
+        }
+    }
+}
 
